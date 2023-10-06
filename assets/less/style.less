@@ -1,0 +1,66 @@
+*{
+    margin: auto;
+    padding: 0px;
+    max-width: 700px;
+}
+.border_red{
+    border: 1px solid red;
+}
+
+#wrapper{
+    h1{
+        margin: 0px 0px 20px 30px;
+    }
+    #order_container{
+        #list_of_orders{
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            li{
+                border: 1px solid gray;
+                list-style: none;
+                margin: 10px;
+                padding: 10px;
+                text-align: center;
+                width: 190px;
+                position: relative;
+                .delete_order_button{
+                    background-color: red;
+                    color: white;
+                    display: none;
+                    padding: 10px;
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                }
+                span{
+                    font-size: 40px;
+                }
+                input{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    #action_buttons{
+        background-color: rgb(233, 224, 148);
+        padding: 20px;
+        text-align: center;
+        input{
+            margin-right: 10px;
+            padding: 10px;
+            width: 500px;
+            &::placeholder{
+                font-style: italic;
+            }
+            &:focus{
+                outline: none;
+            }
+        }
+        button{
+            background: green;
+            color: white;
+            padding: 10px 20px;
+        }
+    }
+}
