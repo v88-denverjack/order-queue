@@ -1,10 +1,14 @@
 *{
     margin: auto;
     padding: 0px;
-    max-width: 700px;
+    max-width: 750px;
 }
 .border_red{
     border: 1px solid red;
+}
+
+.textarea_expanded_heigth{
+    height: auto;
 }
 
 #wrapper{
@@ -12,6 +16,10 @@
         margin: 0px 0px 20px 30px;
     }
     #order_container{
+        max-height: 650px;
+        padding: 10px;
+        overflow: auto;
+        overflow-y: auto;
         #list_of_orders{
             display: flex;
             flex-wrap: wrap;
@@ -26,6 +34,7 @@
                 position: relative;
                 .delete_order_button{
                     background-color: red;
+                    cursor: pointer;
                     color: white;
                     display: none;
                     padding: 10px;
@@ -36,9 +45,19 @@
                 span{
                     font-size: 40px;
                 }
-                input{
+                #order{
                     width: 100%;
+                    border: none;
+                    text-align: center;
+                    height: auto;
+                    resize: none;
+                    &:focus{
+                        outline: none;
+                    }
                 }
+            }
+            p{
+                font-style: italic;
             }
         }
     }
@@ -48,6 +67,7 @@
         text-align: center;
         input{
             margin-right: 10px;
+            max-height: 15px;
             padding: 10px;
             width: 500px;
             &::placeholder{
@@ -60,6 +80,7 @@
         button{
             background: green;
             color: white;
+            cursor: pointer;
             padding: 10px 20px;
         }
     }

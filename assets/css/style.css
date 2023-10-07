@@ -1,13 +1,22 @@
 * {
   margin: auto;
   padding: 0px;
-  max-width: 700px;
+  max-width: 750px;
 }
 .border_red {
   border: 1px solid red;
 }
+.textarea_expanded_heigth {
+  height: auto;
+}
 #wrapper h1 {
   margin: 0px 0px 20px 30px;
+}
+#wrapper #order_container {
+  max-height: 650px;
+  padding: 10px;
+  overflow: auto;
+  overflow-y: auto;
 }
 #wrapper #order_container #list_of_orders {
   display: flex;
@@ -25,6 +34,7 @@
 }
 #wrapper #order_container #list_of_orders li .delete_order_button {
   background-color: red;
+  cursor: pointer;
   color: white;
   display: none;
   padding: 10px;
@@ -35,8 +45,18 @@
 #wrapper #order_container #list_of_orders li span {
   font-size: 40px;
 }
-#wrapper #order_container #list_of_orders li input {
+#wrapper #order_container #list_of_orders li #order {
   width: 100%;
+  border: none;
+  text-align: center;
+  height: auto;
+  resize: none;
+}
+#wrapper #order_container #list_of_orders li #order:focus {
+  outline: none;
+}
+#wrapper #order_container #list_of_orders p {
+  font-style: italic;
 }
 #wrapper #action_buttons {
   background-color: #e9e094;
@@ -45,6 +65,7 @@
 }
 #wrapper #action_buttons input {
   margin-right: 10px;
+  max-height: 15px;
   padding: 10px;
   width: 500px;
 }
@@ -57,5 +78,6 @@
 #wrapper #action_buttons button {
   background: green;
   color: white;
+  cursor: pointer;
   padding: 10px 20px;
 }

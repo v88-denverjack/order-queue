@@ -4,18 +4,26 @@ $(document).ready(function(){
         .on("click", "#submit_button", submitOrder) /* submit order */
         .on("click", ".delete_order_button", deleteOrderButton) /* delete order */
         .on("mouseover mouseleave", "li", onHoverDeleteButton)
+        .on("input", "#order", expandTextarea)
 });
 
 let new_order_queue = 1;
 
 function submitOrder() {
-    let order           = $(this).siblings("#order");
-    let list_of_orders  = $("#list_of_orders");
-    let data_order_id   = Math.floor((Math.random() * 100000000));
-  
-    if(order.val() === "" || order.val().length < 10) {
+    let order               = $(this).siblings("#order");
+    let list_of_orders      = $("#list_of_orders");
+    let data_order_id       = Math.floor((Math.random() * 100000000));
+    let number_of_orders    = list_of_orders.children().length;
+    // let order_container     = $("#container");
+
+    if(number_of_orders >= 1){
+        $("p").hide();
+    }
+    
+
+    if($.trim(order.val()) === "" || order.val().length < 3) {
         order.addClass("border_red");
-        alert("Please add at least 10 characters.");
+        alert("You did not fill out, please add at least 3 characters.");
     }
     else {
         order.removeClass("border_red");
@@ -25,7 +33,7 @@ function submitOrder() {
             <li data-order-id="${data_order_id}">
                 <button class="delete_order_button" type="button">X</button>
                 <span>${new_order_queue}</span>
-                <input type="text" value="${order.val()}">
+                <textarea id="order">${order.val()}</textarea>
             </li>`
         );
         /* Increment the order number for the next order */
@@ -40,9 +48,12 @@ function deleteOrderButton(){
     /* This will remove specific order from the list */
     $('li[data-order-id="' + order_id + '"]').remove();
 
-    if ($("#list_of_orders li").length === 0) {
+    let list_of_orders = $("#list_of_orders li").length;
+
+    if(list_of_orders === 0 && list_of_orders === 0) {
         /* This will reset the order queue to 1 if there are no orders anymore */
         new_order_queue = 1;
+        $("p").show().text("no more orders");
     }
 }
 
@@ -57,5 +68,18 @@ function onHoverDeleteButton(event){
         else if(event.type === "mouseleave") { 
             delete_button.hide(); /* This will hide the delete button */
         }
+    }
+}
+
+function expandTextarea(){
+    $(this).css("height", "");
+    $(this).css("height", Math.min(this.scrollHeight, 300) + "px");
+
+    let li = $(this).closest("li");
+
+    li.removeClass("expanded"); 
+    
+    if(li[0].scrollHeight > 300){
+        li.addClass("expanded"); 
     }
 }
